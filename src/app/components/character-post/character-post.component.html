@@ -1,0 +1,27 @@
+
+<div class="main-box">
+    <form>
+        <div>
+            <label>Name</label>
+            <input type="text" name="name" [(ngModel)]="name">
+        </div>  
+        <div>
+            <label>Occupation</label>
+            <input type="text" name="occupation" [(ngModel)]="occupation" >
+        </div>
+        <div>
+            <label>Debt</label>
+            <select [(ngModel)]="debt" name="debt"  >
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+        <div>
+       
+            <label>Weapon</label>
+            <input type="text" name="weapon" [(ngModel)]="weapon">
+
+        </div>
+        <button type="submit" [disabled]="isDisabled()" (click)="createChar()">Create</button>
+    </form>
+</div>

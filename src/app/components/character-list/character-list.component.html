@@ -1,0 +1,61 @@
+ 
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <title>Bootstrap Theme Company</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <style>
+    .jumbotron {
+      background-color: #847ea2; 
+      color: #ffffff;
+    }
+    </style>
+  <body>
+    
+    
+    <div class="jumbotron text-center">
+        <h1 [ngStyle]="{'color':'#ffffff', 'font-family': 'serif'}" >Movie Characters List</h1>
+        <p> Always try to do what you think and feel is right</p>
+      </div>
+        <button id="btn" class="btn btn-outline-secondary" (click)="getCharacter()" [ngStyle]="{'color': 'rgb(15, 54, 52)', 'font-family': 'serif'}" >Display all Charactres
+        </button>    
+        <!-- <button id="btn" class="btn btn-outline-secondary"  [ngStyle]="{'color': 'rgb(15, 54, 52)', 'font-family': 'serif'}">
+          Get Character by ID
+        </button>
+        
+        <input type="text" placeholder="Write id ..." [(ngModel)]=id>
+        <button (click)="getCharacterById(id)"> Search</button> -->
+        
+
+<app-character-post></app-character-post>
+<ul>
+  <li *ngFor="let character of characters let i = index">
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ character.name }}</h5>
+        <button class="btn btn-primary" (click)="showDetails(character); getIndex(i); ">
+          {{ character.showDetails ? 'Hide details' : 'See more details' }}
+        </button>
+      <div *ngIf="character.showDetails">
+      <div>
+        <app-character-detail  
+        [id]="character.id"
+        [ocuppationProp]="character"
+        [weaponProp]="character"
+        (deleteCharacterEvent)="onDeleteCharacter($event) "></app-character-detail>
+        <app-character-edit [id]="character.id"></app-character-edit>
+      </div>
+        </div>
+        
+      </div>
+    </div>
+  </li>
+</ul>
+
+  </body>
